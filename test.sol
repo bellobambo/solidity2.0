@@ -1,30 +1,37 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.8.2 <0.9.0;
 
+
+
 contract MyContract {
-    address public lastSender;
+    mapping(address => uint) private balances;
 
-    // Recive Payment
-    function receive() external payable {
-        lastSender == msg.sender;
 
-        // msg.sender  (senders address)
-        // msg.value  (amount sent)
+     //Fund Account
+    function deposit() external  payable {
+        balances[msg.sender] += msg.value;
     }
 
-    // Get Balance
-    function getBalance() public view returns (uint256) {
+
+     //Withdraw from Account
+
+    function withdraw(address payable addr, uint amount) public payable {
+        require (balances[addr] >= amount, "Insufficient Fund");
+
+        (bool sent , bytes memory data) = addr.call{value : amount}("");
+        require(sent, "Could not withdraw");
+        balances[msg.sender] -= amount;
+    }
+
+     //View Balance
+
+    function getBalance()public view returns (uint){
+
+        // revert("error message");
+        // assert(true == true, "hello");
+
         return address(this).balance;
     }
-
-
-    // Send Payment
-    function pay (address payable  addr) public  payable {
-        (bool sent, bytes memory data) = addr.call{value : 1 ether}("");
-
-        require(sent , "Error sending Eth");
-    }
-
 
 
 }

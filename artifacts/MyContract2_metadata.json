@@ -7,14 +7,7 @@
 		"abi": [
 			{
 				"inputs": [],
-				"name": "deposit",
-				"outputs": [],
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getBalance",
+				"name": "test",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -23,24 +16,6 @@
 					}
 				],
 				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address payable",
-						"name": "addr",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
-				"name": "withdraw",
-				"outputs": [],
-				"stateMutability": "payable",
 				"type": "function"
 			}
 		],
@@ -57,7 +32,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"test.sol": "MyContract"
+			"test.sol": "MyContract2"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -72,11 +47,11 @@
 	},
 	"sources": {
 		"test.sol": {
-			"keccak256": "0xc2d038e233abd1eecedb8cca8aaab10bd8316839b62a1877916ddb2119657816",
+			"keccak256": "0xe206fe37fc731b35a5d4186df50388e340521c415421f98f815e8020383a8e52",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://4d063c4fb388425b7abf0ace10af2c024e0c8613d43cb4b23e73652809deb734",
-				"dweb:/ipfs/QmeJ6uHA9isZAnn9o7N7RjacD9sbPPPWiqWgKXi8MgEvJn"
+				"bzz-raw://6076b31505eb505b5ac1d8a76f0e5d839f62cff5a73d507d4570894d64dfaf49",
+				"dweb:/ipfs/QmXKQhR9vQBX9i8XyXjaYcsunvHw98hQNFsSrTtQB3LguP"
 			]
 		}
 	},
