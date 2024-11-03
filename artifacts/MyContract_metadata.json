@@ -20,6 +20,32 @@
 			},
 			{
 				"inputs": [],
+				"name": "lastSender",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "addr",
+						"type": "address"
+					}
+				],
+				"name": "pay",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "receive",
 				"outputs": [],
 				"stateMutability": "payable",
@@ -54,11 +80,11 @@
 	},
 	"sources": {
 		"test.sol": {
-			"keccak256": "0x1669877f22a9024db1adc7845e5e74b6133d63c9ef70dbd503debd282b5e0b7c",
+			"keccak256": "0xd692073a7a63e4decb1e4a05d5b2d84478190ff4e4deb11585e3f6d131ff556b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://93b8825cc444d389b6714c55d64ee8d6fe2cd438895dcb233f8bb3bae31826c2",
-				"dweb:/ipfs/QmNnoRQy5zgouHfqAnhbemEKjvmeVS3Vb3Bb32GTnTawpY"
+				"bzz-raw://19ddffe30e1773087d1b71f2c3aa8ff789e6218ff1fd649f4515aae0400cecbf",
+				"dweb:/ipfs/QmRBhekVMLa1RTWxuJaniaTeJub2xRgycvTqTJfUqo82hj"
 			]
 		}
 	},
