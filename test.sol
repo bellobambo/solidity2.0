@@ -3,35 +3,57 @@ pragma solidity >=0.8.2 <0.9.0;
 
 
 
-contract MyContract {
-    mapping(address => uint) private balances;
+contract Auction {
 
 
-     //Fund Account
-    function deposit() external  payable {
-        balances[msg.sender] += msg.value;
+    event Start();
+    event End( address highestBidder, uint highestBid );
+
+    address payable public seller;
+
+    bool public started;
+    bool public ended;
+    uint public endAt;
+
+
+    uint public highestBid;
+    address public highestBidder;
+    mapping (address => uint) public bids;
+
+    constructor(){
+        seller = payable (msg.sender);
+    }
+
+    function start(uint startingBid) external  {
+        require(!started , 'Already started!');
+        require(msg.sender == seller, 'You did not start the auction');
+        started = true;
+        endAt = block.timestamp + 2 days;
+        highestBid = startingBid;
+        emit Start();
     }
 
 
-     //Withdraw from Account
+    function bid() external  payable  {
+        require(started , 'Not started!');
+        require(block.timestamp < endAt, "Ended");
+        require(msg.value > highestBid);
 
-    function withdraw(address payable addr, uint amount) public payable {
-        require (balances[addr] >= amount, "Insufficient Fund");
+        if(highestBidder != address(0)){
+            bids[highestBidder] += highestBid;
+        }
 
-        (bool sent , bytes memory data) = addr.call{value : amount}("");
-        require(sent, "Could not withdraw");
-        balances[msg.sender] -= amount;
+        highestBid = msg.value;
+        highestBidder = msg.sender;
     }
 
-     //View Balance
+    function end() external {
+        require(started, "You Need to Start First!");
+        require(block.timestamp >= endAt , "Auction is still ongoing");
+        require(!ended, "Auction already ended");
 
-    function getBalance()public view returns (uint){
-
-        // revert("error message");
-        // assert(true == true, "hello");
-
-        return address(this).balance;
+        ended = true;
+        emit End(highestBidder, highestBid);
     }
-
 
 }
